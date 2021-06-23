@@ -4,4 +4,6 @@
 
 Last year's version of an NFT.
 
+Will make an NFT, need ideas.
+
 
