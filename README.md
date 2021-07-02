@@ -4,4 +4,6 @@
 
 Will make an NFT, need ideas.
 
+Better start moving on this.
+
 
