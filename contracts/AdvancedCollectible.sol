@@ -6,17 +6,32 @@ import "@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
 contract AdvancedCollectible is ERC721, VRFConsumerBase {
     bytes32 internal keyHash;
     uint256 public fee;
+    uint256 public tokenCounter;
+
+    enum Meta {
+        STEALTH,
+        ALIEN,
+        MUTANT
+    }
+
     mapping(bytes32 => address) public requestIdToSender;
     mapping(bytes32 => string) public requestIdToTokenURI;
+    mapping(uint256 => Meta) public tokenIdToMeta;
+    mapping(bytes32 => uint256) public requestIdToTokenId;
     event requestedCollectible(bytes32 indexed requestId);
 
     constructor(
         address _VRFCoordinator,
         address _LinkToken,
         bytes32 _keyhash
-    ) public VRFConsumer(_VRFCoordinator, _LinkToken) ERC721("Heroes", "HERO") {
+    )
+        public
+        VRFConsumerBase(_VRFCoordinator, _LinkToken)
+        ERC721("Heroes", "HERO")
+    {
         keyHash = _keyhash;
         fee = 0.1 * 10**18; // 0.1 LINK
+        tokenCounter = 0;
     }
 
     function createCollectible(uint256 userProvidedSeed, string memory tokenURI)
@@ -26,6 +41,22 @@ contract AdvancedCollectible is ERC721, VRFConsumerBase {
         bytes32 requestId = requestRandomness(keyHash, fee, userProvidedSeed);
         requestIdToSender[requestId] = msg.sender;
         requestIdToTokenURI[requestId] = tokenURI;
-        emit requestedCollectible(requestedId);
+        emit requestedCollectible(requestId);
+    }
+
+    function fulfillRandomness(bytes32 requestId, uint256 randomNumber)
+        internal
+        override
+    {
+        address heroOwner = requestIdToSender[requestId];
+        string memory tokenURI = requestIdToTokenURI[requestId];
+        uint256 newItemId = tokenCounter;
+        _safeMint(heroOwner, newItemId);
+        _setTokenURI(newItemId, tokenURI);
+        // variable name is meta of type meta
+        Meta meta = Meta(randomNumber % 3);
+        tokenIdToMeta[newItemId] = meta;
+        requestIdToTokenId[requestId] = newItemId;
+        tokenCounter = tokenCounter + 1;
     }
 }
