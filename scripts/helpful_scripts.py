@@ -1,6 +1,11 @@
 from brownie import AdvancedCollectible, accounts, config, interface, network
 
 
+def get_meta(meta_number):
+    switch = {0: "STEALTH", 1: "ALIEN", 2: "MUTANT"}
+    return switch[meta_number]
+
+
 def fund_advanced_collectible(nft_contract):
     dev = accounts.add(config['wallets']['from_key'])
     link_token = interface.LinkTokenInterface(
