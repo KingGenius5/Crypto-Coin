@@ -3,6 +3,7 @@ from scripts.helpful_scripts import get_meta
 
 hero_metadata_dic = {
     "ALIEN": "https://ipfs.io/ipfs/QmamJ18UXv17eDUk1YFJUfWQazbFsoR8p3ZjpZXAMEFQ5d?filename=alien.png",
+    "STEALTH": "https://ipfs.io/ipfs/QmS3PwVi9SitwcWhUpMhkzdVx9ZES4YkjUryCcZ128pzpX?filename=stealth.png",
 }
 
 OPENSEA_FORMAT = "https://testnets.opensea.io/assets/{}/{}"

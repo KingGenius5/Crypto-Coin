@@ -9,6 +9,7 @@ import json
 
 meta_to_image_uri = {
     "ALIEN": "https://ipfs.io/ipfs/QmamJ18UXv17eDUk1YFJUfWQazbFsoR8p3ZjpZXAMEFQ5d?filename=alien.png",
+    "STEALTH": "https://ipfs.io/ipfs/QmS3PwVi9SitwcWhUpMhkzdVx9ZES4YkjUryCcZ128pzpX?filename=stealth.png",
 }
 
 
