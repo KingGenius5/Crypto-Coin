@@ -59,3 +59,9 @@ You can add your environment variables to the `.env` file:
 export WEB3_INFURA_PROJECT_ID=<PROJECT_ID>
 export PRIVATE_KEY=<PRIVATE_KEY>
 ```
+
+## OpenSea Deployment
+
+Checkout these NFTs
+
+[Hero](https://testnets.opensea.io/assets/0x697036fCbeb18733362C0BFB77d613760f20De92/0)
