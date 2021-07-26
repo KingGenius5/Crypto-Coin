@@ -62,6 +62,6 @@ export PRIVATE_KEY=<PRIVATE_KEY>
 
 ## OpenSea Deployment
 
-Checkout these NFTs
+Checkout this Hero token that you can buy.
 
 [Hero](https://testnets.opensea.io/assets/0x697036fCbeb18733362C0BFB77d613760f20De92/0)
